@@ -14,15 +14,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-#include<stdlib.h>
 #include "util/utils.h"
-
-
+#include "APIs/api_lissandra.h"
+//funcion recibir que comunica con memoria
 void recibir_conexion();
 
 int FileSystem_fd;
 
 int  LFS_FD;
+
+
+
 
 #endif /* FILE_SYSTEM_H_ */
