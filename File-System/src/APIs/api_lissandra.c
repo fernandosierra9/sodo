@@ -38,7 +38,7 @@ void create(const char* nombre_de_tabla,const char* tipo_consistencia,unsigned i
 			log_info(logger,"Creando tabla %s" , nombre_de_tabla);
 			crearTabla(rutaTabla);
 			//aplicar_retardo();
-			crearMetadata(nombre_de_tabla, tipo_consistencia, numero_de_particiones, tiempo_de_compactacion);
+			crearMetadata_v2(nombre_de_tabla, tipo_consistencia, numero_de_particiones, tiempo_de_compactacion);
 			//aplicar_retardo();
 			crearArchivosBinariosYAsignarBloque(rutaTabla, numero_de_particiones);
 		}
