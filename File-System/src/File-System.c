@@ -11,6 +11,7 @@
 #include "File-System.h"
 #include "config/config.h"
 
+#include <commons/string.h>
 //int main(void) {
 //	puts("... INICIA LFS ...");
 //
@@ -33,11 +34,21 @@
 //	return EXIT_SUCCESS;
 //}
 
+//char* str_concat_v2(char* from,const char* add){
+//	unsigned int longitud_from=strlen(from);
+//	unsigned int longitud_add=strlen(add);
+//	char * aux = malloc(10000);//(char*)(malloc(((longitud_add+longitud_from)*sizeof(char));
+//	sprintf(aux,"%s%s",from,add);
+//	free(from);
+//	return aux;
+//}
 int main() {
 	puts("comenzando");
-	crearTabla("unaTablaEjemplo");
-	puts("fin exitoso");
-
+//	crearTabla("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo");
+//	crearMetadata_v2("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo/metadata.met","C",4,1000);
+//	crearMetadata_v2("unaMetadata2.met","C",4,1000);
+	mostrarMetadata("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo/metadata.met");
+	puts("fin");
 	return EXIT_SUCCESS;
 }
 

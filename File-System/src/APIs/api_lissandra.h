@@ -13,7 +13,7 @@
 #include <sys/types.h>
 #include <sys/stat.h> // para a estructura stat que me da la descripcion del archivo
 #include <dirent.h>
-
+#include <stdlib.h>
 #define EXITSUCCESS 1
 #define EXITFAILURE 0
 #define STRONGCONSISTENCY "SC"
@@ -44,7 +44,9 @@ typedef struct {
 //auxiliares
 char archivo_path(const char rutaMontaje, const char *rutaArchivo);
 
+void crearMetadata_v2(const char* pathTabla,const char* tipoConsistencia, unsigned int numeroParticiones,
+		unsigned int tiempoCompactacion);
 
-
+void mostrarMetadata(const char* path_config);
 
 #endif /* APIS_API_LISSANDRA_H_ */

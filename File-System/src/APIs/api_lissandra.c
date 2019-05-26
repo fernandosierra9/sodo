@@ -6,6 +6,8 @@
  */
 #include "api_lissandra.h"
 
+#include <commons/config.h>
+#include <commons/txt.h>
 
 void select1(const char * nombre_de_tabla, unsigned int key){
 	verificar_existencia_de_tabla(nombre_de_tabla);
@@ -164,30 +166,60 @@ int existeTabla(const char* rutaTabla){
 ////--------------------------EJECUCIONES INICIO
 
 void crearTabla(const char* rutaTabla){
-	char* aux_path_directorio=str_concat(lfs.puntoDeMontaje,"Tables/");
-	aux_path_directorio=str_concat(aux_path_directorio,rutaTabla);
-	if(mkdir(aux_path_directorio, S_IRWXU) == -1){
-		log_error(logger, "No se pudo crear directorio %s" ,aux_path_directorio);
-		free(aux_path_directorio);
+//	char* aux_path_directorio=str_concat(lfs.puntoDeMontaje,"Tables/");
+//	aux_path_directorio=str_concat(aux_path_directorio,rutaTabla);
+	if(mkdir(rutaTabla, S_IRWXU) == -1){
+		log_error(logger, "No se pudo crear directorio %s" ,rutaTabla);
 		return ;
 	}
 	else {
-		free(aux_path_directorio);
 	}
 }
 //
 //
 //}
 //
-void crearMetadata(const char rutaArchivo, const char tipoConsistencia, unsigned int numeroParticiones,
+void crearMetadata(const char* pathDeTabla, const char tipoConsistencia, unsigned int numeroParticiones,
 		unsigned int tiempoCompactacion){
 
-	char* rutaMetadata = archivo_path(rutaArchivo, "Tables/Metadata.met");
-	crearArchivo(rutaMetadata);
-	insertarInfoEnMetadata(rutaMetadata, tipoConsistencia, numeroParticiones, tiempoCompactacion);
-	free(rutaMetadata);
+//	char* rutaMetadata = archivo_path(pathDeTabla, "Tables/Metadata.met");
+	crearArchivo(pathDeTabla);
+	insertarInfoEnMetadata(pathDeTabla, tipoConsistencia, numeroParticiones, tiempoCompactacion);
+	free(pathDeTabla);
 }
+void crearMetadata_v2(const char* pathTabla,const char* tipoConsistencia, unsigned int numeroParticiones,
+		unsigned int tiempoCompactacion){ //ok
+	FILE* unArchivo=fopen(pathTabla,"w+r");
+	fprintf(unArchivo,"CONSISTENCY=%s \n",tipoConsistencia);
+	fprintf(unArchivo,"PARTITIONS=%d \n",numeroParticiones );
+	fprintf(unArchivo,"COMPACTION_TIME=%d ",tiempoCompactacion);
+	fclose(unArchivo);
+//	CONSISTENCY=SC
+//	PARTITIONS=3
+//	COMPACTION_TIME=60000
+}
+void mostrarMetadata(const char* path_config){
 
+	Metadata_Tabla unMetadata;//=obtenerMetadata(path_config);
+	t_config* unConfig=config_create(path_config);
+	if(unConfig==NULL){
+		fprintf(stderr,"No Existe el archivo %s \n",path_config);
+		return;
+	}
+	else {
+		unMetadata.COMPACTION_TIME=config_get_int_value(unConfig,"COMPACTION_TIME");
+		unMetadata.CONSISTENCY=strdup(config_get_string_value(unConfig,"CONSISTENCY"));
+		unMetadata.PARTITIONS=config_get_int_value(unConfig,"PARTITIONS");
+	}
+	config_destroy(unConfig);
+	//mostrar
+	printf("COMPACTION_TIME = %d  \n",unMetadata.COMPACTION_TIME);
+	printf("CONSISTENCY= %s \n",unMetadata.CONSISTENCY);
+	printf("PARTITIONS= %d \n",unMetadata.PARTITIONS);
+
+	free(unMetadata.CONSISTENCY);
+
+}
 void crearArchivo(const char rutaArchivo, const char tipoArchivo){
 
 	log_info(logger, "Creando archivo" + tipoArchivo);
@@ -215,6 +247,7 @@ void insertarInfoEnMetadata(const char rutaMetadata, const char tipoConsistencia
 		free(record);
 	}
 	fclose(metadata);
+
 }
 
 void crearArchivosBinariosYAsignarBloque(const char* rutaArchivo, unsigned int numeroParticiones){
@@ -228,6 +261,12 @@ void crearArchivosBinariosYAsignarBloque(const char* rutaArchivo, unsigned int n
 		free(rutaArchivoBinario);
 	}
 }
+
+void copiarStringABloquesLibres(const char* contenido_LQL){
+//	char*  path_posicionDelBloqueLibre = getBloqueLibre_path_v2();
+
+}
+
 
 //void aplicar_retardo(){
 ////	sleep(lfs.retardo/1000);

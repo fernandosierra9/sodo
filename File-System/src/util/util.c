@@ -109,3 +109,4 @@ char * fileToString_v2(const char* pathFile){//ok,
 
 
 
+

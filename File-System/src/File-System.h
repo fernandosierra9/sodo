@@ -13,6 +13,7 @@
 #include <commons/collections/list.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "util/util.h"
 #include "APIs/api_lissandra.h"
