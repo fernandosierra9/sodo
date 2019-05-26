@@ -12,17 +12,24 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h> // para a estructura stat que me da la descripcion del archivo
+#include <dirent.h>
 
+#define EXITSUCCESS 1
+#define EXITFAILURE 0
+#define STRONGCONSISTENCY "SC"
+#define EVENTUALCONSISTENCY "EC"
 #include <stdbool.h>
 
+#include "../config/config.h"
+
 //funciones de la API de LFS,para ser consultadas
-void* select1(const char * nombre_de_tabla, unsigned int key);
+void select1(const char * nombre_de_tabla, unsigned int key);
 	//el timestamp es opcional
 void insert_1(const char* nombre_de_tabla,unsigned int key , const char* value);
-void* insert_2(const char* nombre_de_tabla,unsigned int key , const char* value, const char * timestamp);
+void insert_2(const char* nombre_de_tabla,unsigned int key , const char* value, const char * timestamp);
 void create(const char* nombre_de_tabla,const char* tipo_consistencia,unsigned int numero_de_particiones,unsigned int tiempo_de_compactacion );
-void* describe1();
-void* describe2(const char* nombre_de_tabla);
+void describe1();
+void describe2(const char* nombre_de_tabla);
 void drop(const char* nombre_de_tabla);
 
 
@@ -33,5 +40,11 @@ typedef struct {
 	unsigned int PARTITIONS;//=3
 	unsigned long COMPACTION_TIME;//=60000
 }Metadata_Tabla;
+
+//auxiliares
+char archivo_path(const char rutaMontaje, const char *rutaArchivo);
+
+
+
 
 #endif /* APIS_API_LISSANDRA_H_ */

@@ -28,7 +28,7 @@ typedef struct {
 //	 Metadata_LFS metadata;
 //	 Bitmap bitmap;
 }LFS;
-LFS lfs;
+LFS lfs;//variable global que contiene los valores de LFS.config
 
 void probando();
 

@@ -11,27 +11,38 @@
 #include "File-System.h"
 #include "config/config.h"
 
-int main(void) {
-	puts("... INICIA LFS ...");
+//int main(void) {
+//	puts("... INICIA LFS ...");
+//
+//	//inicio log
+//	logger = log_create("LFS.log", "LISSANDRA - LFS", true, LOG_LEVEL_TRACE);
+//
+//	config_cargar("LFS.config");
+//	log_info(logger,"se cargo LFS.log");
+//
+//
+//
+//	imprimir_configuracion();
+//
+////	recibir_conexion();//recibe conexion de memoria
+//
+//	log_destroy(logger);
+//
+//
+//	puts("... FIN LFS ...");
+//	return EXIT_SUCCESS;
+//}
 
-	//inicio log
-	logger = log_create("LFS.log", "LISSANDRA - LFS", true, LOG_LEVEL_TRACE);
+int main() {
+	puts("comenzando");
+	crearTabla("unaTablaEjemplo");
+	puts("fin exitoso");
 
-	config_cargar("LFS.config");
-	log_info(logger,"se cargo LFS.log");
-
-
-
-	imprimir_configuracion();
-
-//	recibir_conexion();//recibe conexion de memoria
-
-	log_destroy(logger);
-
-
-	puts("... FIN LFS ...");
 	return EXIT_SUCCESS;
 }
+
+
+
 
 void recibir_conexion(){
 
