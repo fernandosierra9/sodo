@@ -33,7 +33,6 @@ int main(void) {
 	return EXIT_SUCCESS;
 }
 
-
 void recibir_conexion(){
 
 	crearSocket(&FileSystem_fd);

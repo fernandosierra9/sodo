@@ -13,20 +13,20 @@
 
 t_log * logger ; // variable del archivo de loggeo de hitos
 
-typedef struct {
-	unsigned int tamanioBloque,cantidadDeBloques;
-	char magicNumber[3];
-}Metadata_LFS;
-typedef struct {
-	unsigned int  cantidadDeBytesOcupado;
-}Bitmap;
+//typedef struct {
+//	unsigned int tamanioBloque,cantidadDeBloques;
+//	char magicNumber[3];
+//}Metadata_LFS;
+//typedef struct {
+//	unsigned int  cantidadDeBytesOcupado;
+//}Bitmap;
 
 typedef struct {
 	 int puertoEscucha,tamanioValue;
 	long retardo,tiempoDump;
 	char* puntoDeMontaje;//[LEN_MAXIMO];
-	 Metadata_LFS metadata;
-	 Bitmap bitmap;
+//	 Metadata_LFS metadata;
+//	 Bitmap bitmap;
 }LFS;
 LFS lfs;
 
