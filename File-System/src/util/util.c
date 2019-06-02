@@ -47,17 +47,34 @@ void crearBloques(int cantidad){//ok, se puede mejorar con realloc
 		free(unPath);
 	}
 }
-char* str_concat(  char* from,const char* add){//devuelve algo malloqueado,OK,guarda
+char* str_concat( const char* from,const char* add){//ok, devuelve algo malloqueado,OK,guarda
 	if(from==NULL)return strdup(add);
 	else{
 		int malloq=(strlen(from)+strlen(add))*sizeof(char);
-		char* aux = malloc(malloq);
+		char* aux = (char*)malloc(malloq);
 		sprintf(aux,"%s%s",from,add);
-		free(from);
+//		free(from);
 		return aux;
 	}
 }
-char* intToString( int n){//OK
+char*  str_concat_v2(const char* from,const char* add){//ok
+	if(strlen(from)==0 || strlen(add)==0 || from==NULL )perror("str_concat_v2 from o add nulos");
+	char* s=(char*)malloc((strlen(from)+strlen(add))*sizeof(char));
+//	char* aux=from;
+	strcat(s,from);
+	strcat(s,add);
+	return s;
+}
+void mostrarCaracteres(const char* string){
+
+	printf("%d de len de %s \n ",strlen(string), string);
+	for(int i =0;i<strlen(string);i++){
+		printf("pos i = %d y char = %c \n", i,string[i]);
+	}
+}
+
+
+char* intToString( int n){//OK, atoa y atoi ya existen igual
 //	int cantidadDeDigitos;
 //	int resto=n*10;
 //	for(cantidadDeDigitos=0;resto%10==0;cantidadDeDigitos++)resto=resto/10;

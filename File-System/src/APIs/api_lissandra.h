@@ -33,7 +33,7 @@ void describe2(const char* nombre_de_tabla);
 void drop(const char* nombre_de_tabla);
 
 
-bool verificar_existencia_de_tabla(const char* nombre_de_tabla);
+bool yaExisteTabla(const char* nombre_de_tabla);
 
 typedef struct {
 	char* CONSISTENCY;//=SC
@@ -49,4 +49,7 @@ void crearMetadata_v2(const char* pathTabla,const char* tipoConsistencia, unsign
 
 void mostrarMetadata(const char* path_config);
 
+void crearTabla(const char* nombreDeTabla);//ok
+bool existeCarpeta(const char* path_tabla);
+char*  obtenerPathDeTabla(const char* nombre_de_tabla);
 #endif /* APIS_API_LISSANDRA_H_ */

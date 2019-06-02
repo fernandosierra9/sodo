@@ -12,46 +12,42 @@
 #include "config/config.h"
 
 #include <commons/string.h>
-//int main(void) {
-//	puts("... INICIA LFS ...");
-//
-//	//inicio log
-//	logger = log_create("LFS.log", "LISSANDRA - LFS", true, LOG_LEVEL_TRACE);
-//
-//	config_cargar("LFS.config");
-//	log_info(logger,"se cargo LFS.log");
-//
-//
-//
-//	imprimir_configuracion();
-//
-////	recibir_conexion();//recibe conexion de memoria
-//
-//	log_destroy(logger);
-//
-//
-//	puts("... FIN LFS ...");
-//	return EXIT_SUCCESS;
-//}
+int main(void) {
+	puts("... INICIA LFS ...");
 
-//char* str_concat_v2(char* from,const char* add){
-//	unsigned int longitud_from=strlen(from);
-//	unsigned int longitud_add=strlen(add);
-//	char * aux = malloc(10000);//(char*)(malloc(((longitud_add+longitud_from)*sizeof(char));
-//	sprintf(aux,"%s%s",from,add);
-//	free(from);
-//	return aux;
-//}
-int main() {
-	puts("comenzando");
-//	crearTabla("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo");
-//	crearMetadata_v2("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo/metadata.met","C",4,1000);
-//	crearMetadata_v2("unaMetadata2.met","C",4,1000);
-	mostrarMetadata("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo/metadata.met");
-	puts("fin");
+	//inicio log
+	logger = log_create("LFS.log", "LISSANDRA - LFS", true, LOG_LEVEL_TRACE);
+
+	config_cargar("LFS.config");
+	log_info(logger,"se cargo LFS.log \n");
+
+
+
+	imprimir_configuracion();
+
+//	crearTabla("tablaEjemplo");
+//	puts(obtenerPathDeTabla("AAAAAA"));
+//	mostrarMetadata("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo/metadata.met");
+
+	create("EEEE","SC",5,1000);
+//	recibir_conexion();//recibe conexion de memoria
+
+	log_destroy(logger);
+
+
+	puts("... FIN LFS ...");
 	return EXIT_SUCCESS;
 }
-
+//int main() {//ok
+//	puts("comenzando");
+////	crearTabla("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo");
+////	crearMetadata_v2("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo/metadata.met","C",4,1000);
+////	crearMetadata_v2("unaMetadata2.met","C",4,1000);
+//	crearTabla("tablaEjemplo");
+//	mostrarMetadata("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo/metadata.met");
+//	puts("fin");
+//	return EXIT_SUCCESS;
+//}
 
 
 
