@@ -25,12 +25,11 @@ int main(void) {
 
 	imprimir_configuracion();
 
-//	crearTabla("tablaEjemplo");
-//	puts(obtenerPathDeTabla("AAAAAA"));
-//	mostrarMetadata("src/punto_de_montaje_FS_LISSANDRA_ejemplo/Tables/TablaDeEjemplo/metadata.met");
+	create("XXXx","SC",8,1000);//ok
 
-	create("EEEE","SC",5,1000);
 //	recibir_conexion();//recibe conexion de memoria
+	//insert_1("EEEE",1,"Holassss");//falta
+
 
 	log_destroy(logger);
 

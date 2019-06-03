@@ -60,3 +60,17 @@
 
 [ERROR] 17:39:47:6 LISSANDRA - LFS/(19314:19314): No se pudo crear directorio para tabla  "EEEE" 
 
+[INFO] 17:51:25:144 LISSANDRA - LFS/(20003:20003): se cargo LFS.log 
+
+[INFO] 18:36:17:416 LISSANDRA - LFS/(21426:21426): se cargo LFS.log 
+
+[INFO] 18:40:03:628 LISSANDRA - LFS/(21583:21583): se cargo LFS.log 
+
+[INFO] 23:31:49:184 LISSANDRA - LFS/(30455:30455): se cargo LFS.log 
+
+[INFO] 23:34:59:113 LISSANDRA - LFS/(30602:30602): se cargo LFS.log 
+
+[INFO] 23:35:51:576 LISSANDRA - LFS/(30669:30669): se cargo LFS.log 
+
+[INFO] 23:36:56:877 LISSANDRA - LFS/(30743:30743): se cargo LFS.log 
+

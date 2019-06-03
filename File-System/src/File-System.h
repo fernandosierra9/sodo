@@ -24,7 +24,17 @@ int FileSystem_fd;
 
 int  LFS_FD;
 
-
+//typedef struct {
+//	int cantParticionesTemporales;
+//	char* nombreDeLaTabla;
+//	t_list *_inserts;
+//}Insert;
+//typedef struct {
+//		unsigned long timestamp;
+//		unsigned int key;
+//		char value[lfs.tamanioValue];
+//}RegistroLinea;
+//t_list * memtable;
 
 
 #endif /* FILE_SYSTEM_H_ */

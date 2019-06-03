@@ -36,7 +36,7 @@ void drop(const char* nombre_de_tabla);
 bool yaExisteTabla(const char* nombre_de_tabla);
 
 typedef struct {
-	char* CONSISTENCY;//=SC
+	char CONSISTENCY[3];//=SC
 	unsigned int PARTITIONS;//=3
 	unsigned long COMPACTION_TIME;//=60000
 }Metadata_Tabla;
@@ -44,12 +44,14 @@ typedef struct {
 //auxiliares
 char archivo_path(const char rutaMontaje, const char *rutaArchivo);
 
+void mostrarMetadata(const char* nombreTabla);
 void crearMetadata_v2(const char* pathTabla,const char* tipoConsistencia, unsigned int numeroParticiones,
 		unsigned int tiempoCompactacion);
 
-void mostrarMetadata(const char* path_config);
-
+Metadata_Tabla *obtenerMetadata(const char* nombreTabla);
 void crearTabla(const char* nombreDeTabla);//ok
-bool existeCarpeta(const char* path_tabla);
+bool yaExisteCarpeta(const char* path_tabla);
 char*  obtenerPathDeTabla(const char* nombre_de_tabla);
+void crearParticiones(const char* tabla, unsigned int numeroDeParticiones);
+
 #endif /* APIS_API_LISSANDRA_H_ */
